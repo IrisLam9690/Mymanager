@@ -1,0 +1,4 @@
+manager中原来定义的id要换成managerid
+
+
+基本配置了dao bean servet层
