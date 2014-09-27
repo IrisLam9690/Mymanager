@@ -1,0 +1,15 @@
+该系统首先通过 maven 的 pom（项目对象模型）把 CXF 的 jar 文件依赖加进
+来，然后在工程的资源文件夹 resources 下建立配置文件 beans.xml，在这个配
+置文件中把 CXF 的 API（JAX-RS）嵌入到 Spring 容器中。在 beans.xml 文件中，
+我们会配置两部分主要内容，首先把服务层 bean（学生用户、企业用户和移动
+端服务）注入到 Spring 容器中，然后配置 CXF 转发资源的对应的 key 和 value，
+建立模型和视图的对应关系，有点类似 MVC 中的 Controller。在程序中我们采
+用分层设计（第三章会详细介绍），在服务层我们创建的 bean 就是在 beans.xml
+中注入到 Spring 容器中的，这些 bean 包含的方法就是对外开放的遵守 HTTP 协
+议的接口。每个 bean 会对应一个根路径，bean 里面的每个方法会在这个根路径
+下根据系统架构进行扩展，这些配置都是通过注解实现的。在 bean 中的方法上
+除了路径注解，还有请求方法注解(GET 或 POST 等)，生产模型类型（JSON、XML
+或 HTML ） 注 解 ， 消 费 类 型 （ "application/x-www-form-urlencoded" ，
+"multipart/form-data"，"application/json;charSet=utf-8"）注解等。
+
+
